@@ -1,0 +1,69 @@
+extends dashbord
+
+block user_view_content
+    h1.main-heading Edit Your Product
+    form.form.form-edit-product(autocomplete="off")
+        .user-view__form-container
+            .form__group
+                label.form__label(for='product_name') Product Name
+                input#product_name.form__input(type='text', required , value=`${product.name}`)
+            .form__group
+                label.form__label(for='category') Category
+                select#category.form__input(name="category")
+                    if product.category == 'grocery'
+                        option(value="grocery" selected ) Grocery
+                    else  
+                        option(value="grocery" ) Grocery
+                    if product.category == 'legumes'
+                        option(value="legumes" selected ) Legumes
+                    else  
+                        option(value="legumes" ) Legumes
+                    if product.category == 'spices'
+                        option(value="spices" selected ) Spices
+                    else  
+                        option(value="spices" ) Spices
+                    if product.category == 'other'
+                        option(value="other" selected) other
+                    else  
+                        option(value="other") other
+            .form__group
+                label.form__label(for='quality') Quality
+                select#quality.form__input(name="quality")
+                    if product.quality == 'fakher el-diwan'
+                        option(value="fakher el-diwan" selected) فخر الديوان
+                    else  
+                        option(value="fakher el-diwan" ) فخر الديوان
+                    if product.quality == 'high class'
+                        option(value="high class" selected) هاي كلاس
+                    else  
+                        option(value="high class" ) هاي كلاس
+                    if product.quality == 'noor el-nass'
+                        option(value="noor el-nass" selected) نور الناس
+                    else  
+                        option(value="noor el-nass" ) نور الناس
+                    if product.quality == 'other'
+                        option(value="other" selected) other
+                    else  
+                        option(value="other") other
+            .form__group
+                label.form__label(for='slug') slug
+                input#slug.form__input(type='text', required , value=`${product.slug}`)
+            .form__group
+                label.form__label(for='price') Price (EGP)
+                input#price.form__input(type='number', required , value=`${product.price}`)
+        .user-view__form-container
+            .form__group
+                label.form__label(for='price_discount') Price Discount (EGP)
+                input#price_discount.form__input(type='number', required , value=`${product.priceDiscount || 0}`)
+            .form__group
+                label.form__label(for='weight') Weight (KG)
+                input#weight.form__input(type='text', required , value=`${product.weight}`)
+            .form__group
+                label.form__label(for='summary') Description
+                input#summary.form__input(type='text', required , value=`${product.summary}`)
+            .form__group.right
+                button.edit_product_btn.btn.btn--small.btn--green(data-id=`${product.id}`) Update Product
+            .form__group.form__photo-upload
+                img.form__user-photo(src=`/img/products/${product.image}`, alt='Product image')
+                input.form__upload(type='file' accept='image/*' id='image' name='image')
+                label(for='image') Choose new photo

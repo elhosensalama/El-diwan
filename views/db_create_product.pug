@@ -1,0 +1,46 @@
+extends dashbord
+
+block user_view_content
+    h1.main-heading Create New Product
+    form.form.form-create-product(autocomplete="off")
+        .user-view__form-container
+            .form__group
+                label.form__label(for='product_name') Product Name
+                input#product_name.form__input(type='text', required , value="fool")
+            .form__group
+                label.form__label(for='category') Category
+                select#category.form__input(name="category")
+                    option(value="grocery") Grocery
+                    option(value="legumes") Legumes
+                    option(value="spices") Spices
+                    option(value="other") other
+            .form__group
+                label.form__label(for='quality') Quality
+                select#quality.form__input(name="quality")
+                    option(value="fakher el-diwan") فخر الديوان
+                    option(value="high class") هاي كلاس
+                    option(value="noor el-nass") نور الناس
+                    option(value="other") other
+            .form__group
+                label.form__label(for='slug') slug
+                input#slug.form__input(type='text', required , value='slug')
+            
+            .form__group
+                label.form__label(for='price') Price (EGP)
+                input#price.form__input(type='text', required , value="5")
+        .user-view__form-container
+            .form__group
+                label.form__label(for='price_discount') Price Discount (EGP)
+                input#price_discount.form__input(type='text', required , value="0")
+            .form__group
+                label.form__label(for='weight') Weight (KG)
+                input#weight.form__input(type='text', required , value="1")
+            .form__group
+                label.form__label(for='summary') Description
+                input#summary.form__input(type='text', required , value="1")
+            .form__group.right
+                button.create_product_btn.btn.btn--small.btn--green Create Product
+            .form__group.form__photo-upload
+                img.form__user-photo(src=`img/products/default.jpg`, alt='Product image')
+                input.form__upload(type='file' accept='image/*' id='image' name='image')
+                label(for='image') Choose new photo

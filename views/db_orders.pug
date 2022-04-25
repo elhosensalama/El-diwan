@@ -1,0 +1,34 @@
+extends dashbord
+
+block user_view_content
+    h1.main-heading Manage The Orders
+    
+    .main-container
+        .table-container
+            table 
+                thead 
+                    tr
+                        th #
+                        th name
+                        th email
+                        th state
+                        th phone
+                        th total Price
+                        th manage
+                tbody 
+                    - let i = 0
+                    each o in orders
+                        - i++
+                        tr
+                            td= i
+                            td= o.name
+                            td= o.email
+                            td= o.state
+                            td= o.phone
+                            td= o.totalPrice + ' EGP'
+                            td 
+                                button.delete_item_btn(data-id=`${o.id}` data-item='order' data-kind="btn")
+                                    i.manageIcon.icofont-bin 
+                                button.show_item_btn(data-id=`${o.id}` data-item='order' data-kind="btn")
+                                    i.manageIcon.icofont-eye-alt 
+                                    //- show

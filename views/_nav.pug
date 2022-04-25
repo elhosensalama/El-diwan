@@ -1,0 +1,32 @@
+// Navigation Bar
+nav.navbar.navbar-expand-lg.navbar-light
+    .container
+        a.navbar-brand(href='/')
+            img(src='/img/front/logo.png' alt='')
+        button.navbar-toggler(type='button' data-toggle='collapse' data-target='#navbarSupportedContent' aria-controls='navbarSupportedContent' aria-expanded='false' aria-label='Toggle navigation')
+            span.navbar-toggler-icon
+        #navbarSupportedContent.collapse.navbar-collapse
+            ul.navbar-nav
+                li.nav-item(class=`${ nav_item_home ? 'active' : '' }`)
+                    a.nav-link(href='/' routerlinkactive='router-link-active')
+                        | Home 
+                        span.sr-only (current)
+                li.nav-item(class=`${ nav_item_about ? 'active' : '' }`)
+                    a.nav-link(href='/about')
+                        | About 
+                        span.sr-only (current)
+                li.nav-item(class=`${ nav_item_shop ? 'active' : '' }`)
+                    a.nav-link(href='/shop')
+                        | All Product 
+                        span.sr-only (current)
+                li.nav-item(class=`${ nav_item_contact ? 'active' : '' }`)
+                    a.nav-link(href='/contact')
+                        | Contact 
+                        span.sr-only (current)
+                li.nav-item(class=`${ nav_item_cart ? 'active' : '' }`)
+                    a.nav-link(href='/cart')
+                        i.icofont-bag.cartBag.center
+                            span.cartValue= cartValue || 0
+                        span.sr-only (current)
+            //- form.form-inline.my-2.my-lg-0
+            //-     button.btn.btn-outline-success.btn-1.my-2.my-sm-0(type='submit') Search

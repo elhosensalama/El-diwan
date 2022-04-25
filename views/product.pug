@@ -1,0 +1,135 @@
+extends base
+
+block page_content
+
+    section.product-section#product_page
+        .container
+            
+            .row
+                .col-lg-6.col-md-6.col-12.col
+                    img.product-img(src=`/img/products/${product.image}`, alt="product img")
+                .col-lg-6.col-md-6.col-12.col
+                    span
+                        a.c-gray(href="/") Home / 
+                        a.c-gray(href="/shop")= product.category + ' / ' 
+                        a.c-gray(href=`/shop/${product.slug}`)= product.name
+                    h1.productName= product.name 
+                    .productRating
+                                span
+                                    - let i = 0 , fill = Math.ceil(product.ratingsAverage) ;
+                                    - while( i < fill )
+                                        i.icofont-star.c-main
+                                        - i++
+                                    - while( i < 5 )
+                                        i.icofont-star.c-gray
+                                        - i++
+                                    span.productQuantity.c-main= `(${product.ratingsQuantity} customer review)`
+                            
+                    h2.productPrice= product.price + 'EGP'
+                    if product.weight >= 1
+                        span.productWeight= 'Size: ' + product.weight +'Kilo' 
+                    else 
+                        span.productWeight= 'Size: ' + product.weight*1000 +'Gram'
+                    form.formToCart
+                        input#getIID(type="hidden", name="id" value=`${product.id}`)
+                        input#nameOfCart(type="hidden", name="name" value=`${product.name}`)
+                        input#priceOfCart(type="hidden", name="price" value=`${product.price}`)
+                        input#imgOfCart(type="hidden", name="img" value=`${product.image}`)
+                        input#count(type="number", name="count-of-product" value="1" min="1") 
+                        input#submitToCart.btn-2(type="submit", value="Add to cart")
+                    span.productCategory= 'Category: ' 
+                        span.c-main= product.category
+            //-  Tab links 
+            .tab
+                button#ad-info-btn.tablinks Additional information
+                button#reviews-btn.tablinks= 'Reviews (' + product.ratingsQuantity + ')'
+
+            //- Tab content 
+            #ad-info.tabcontent
+                h3
+                    span.c-main Weight : 
+                    =product.weight + ' Kg'
+                h3
+                    span.c-main Package size : 
+                    = product.summary 
+
+            #reviews.tabcontent
+                .row 
+                    .col-lg-6.col-12.review-content-container
+                        h2.review-count-heading= product.ratingsQuantity + ' review for ' + product.name
+                        if reviews.length != 0
+                            each r in reviews 
+                                .row 
+                                    .col-2.userImage
+                                        i.icofont-user-alt-3.icon-user 
+                                    .col-10 
+                                        div.reviewPublisher= r.publisher
+                                        div.reviewRating
+                                            - let i = 0 , fill = Math.floor(r.rating) ;
+                                            - while( i < fill )
+                                                i.icofont-star.c-main
+                                                - i++
+                                            - while( i < 5 )
+                                                i.icofont-star.c-gray
+                                                - i++
+                                        div.reviewContent= r.review
+                                hr 
+                        else 
+                            h3 No Reviews for this Product
+                    .col-lg-5.col-12.review-add-container.ml-4
+                        h2 Add a review
+                        form.addReviewForm(action="" autocomplete="off")
+                            .row 
+                                .col-4
+                                    label(for="#userName") Your name
+                                .col-8
+                                    input#userName(type="text", name="name")
+                                .col-4
+                                    label(for="#userName") Your email
+                                .col-8
+                                    input#userEmail(type="email", name="email")
+                            label(for="#userName") Your rating 
+                            span.stars#rating_bar
+                                span.star.star-1.mr-1#rate_1
+                                span.star.star-2.mr-1#rate_2
+                                span.star.star-3.mr-1#rate_3
+                                span.star.star-4.mr-1#rate_4
+                                span.star.star-5.mr-1#rate_5
+                            br
+                            input#userRating(type="hidden", name="rating")
+                            label(for="#userName") Your review
+                            textarea#userReview(name="review", cols="30", rows="3") 
+                            input.btn-2#addReview-btn(type="submit", value="Submit")
+
+
+            .related-products 
+                h1.related-heading Related products 
+                .row 
+                    each p in relatedProducts
+                        .col-lg-3.col-md-3.col-sm-6.col-12
+                            .main-product
+                                .productImg
+                                    a(href=`/shop/${p.slug}`) 
+                                        img(src=`/img/products/${p.image}` style="width:100%" alt='')
+                                .productCategory.c-white
+                                    span= p.category
+                                .productName
+                                    span= p.name
+                                .productRating
+                                    span
+                                        - let i = 0 , fill = Math.floor(p.ratingsAverage) ;
+                                        - while( i < fill )
+                                            i.icofont-star.c-main
+                                            - i++
+                                        - while( i < 5 )
+                                            i.icofont-star.c-white
+                                            - i++
+                                .productPrice
+                                    span= p.price + ' EGP'
+            //- <div id="rating_bar">
+            //-     <span id="rate_1"></span>
+            //-     <span id="rate_2"></span>
+            //-     <span id="rate_3"></span>
+            //-     <span id="rate_4"></span>
+            //-     <span id="rate_5"></span>
+            //- </div>

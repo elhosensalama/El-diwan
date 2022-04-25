@@ -1,0 +1,70 @@
+extends dashbord
+
+block user_view_content
+    h1.main-heading Dashboard
+    //- img.dashboard__img(src="/img/girl.svg", alt="alt")
+    .dashboard__container 
+        span.con__head.con__head--1
+            div.con__head-i.con__head-i-1
+                i.icofont-search-map 
+            div.con__head-s
+                span.con__head-s1 Total Products
+                span.con__head-s2= totalProducts
+        span.con__head.con__head--2
+            div.con__head-i.con__head-i-2
+                i.icofont-card 
+            div.con__head-s
+                span.con__head-s1 Recived Orders
+                span.con__head-s2= totalOrders
+        span.con__head.con__head--3
+            div.con__head-i.con__head-i-3
+                i.icofont-slightly-smile 
+            div.con__head-s
+                span.con__head-s1 Users Reviews
+                span.con__head-s2= totalReviews
+        span.con__head.con__head--4
+            div.con__head-i.con__head-i-4
+                i.icofont-shopify 
+            div.con__head-s
+                span.con__head-s1 Happy Clients
+                span.con__head-s2= bestProductsTotal
+
+    
+    .container__bestSelling
+        h1 Our Best Selling Products
+
+        table
+            tr
+                th #
+                th 
+                    i.icofont-image 
+                    |  Image 
+                th 
+                    i.icofont-ui-user 
+                    | Name
+                th 
+                    i.icofont-artichoke 
+                    | Category 
+                th 
+                    i.icofont-price 
+                    | Price 
+                th
+                    i.icofont-food-basket 
+                    | Weight 
+                th
+                    i.icofont-ui-rating 
+                    | Rating
+            - let i = 0
+                each p in bestProducts
+                    - i++
+                    tr
+                        td= i
+                        td
+                            img(src=`/img/products/${p.image}` style="width: 50px; height: 50px;" alt="alt")
+                        td= p.name
+                        td= p.category
+                        td= p.price + ' EGP'
+                        //- td= p.slug
+                        td= p.weight + ' KG'
+                        td= p.ratingsAverage
+                    

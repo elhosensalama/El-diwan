@@ -1,0 +1,32 @@
+extends base
+
+block page_content
+
+    section.products-section 
+        .container.customezed-container-15
+            h1.c-main Shop
+            .row
+                each p in products
+                    .col-lg-3.col-md-4.col-sm-6.col-12
+                        .main-product
+                            .productImg
+                                a(href=`/shop/${p.slug}`) 
+                                    img(src=`/img/products/${p.image}` style="width:100%" alt='')
+                            .productCategory.c-white
+                                span= p.category
+                            .productName
+                                span= p.name
+                            .productRating
+                                span
+                                    - let i = 0 , fill = Math.ceil(p.ratingsAverage) ;
+                                    - while( i < fill )
+                                        i.icofont-star.c-main
+                                        - i++
+                                    - while( i < 5 )
+                                        i.icofont-star.c-white
+                                        - i++
+                            .productPrice
+                                span= p.price + ' EGP'
+                            .product-footer
+                                a.btn.btn-2.btn-cart(href=`/shop/${p.slug}`)
+                                    i.icofont-cart

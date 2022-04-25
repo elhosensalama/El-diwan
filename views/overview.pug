@@ -1,0 +1,187 @@
+extends base
+
+block page_content
+
+    // Banner
+    .container
+        section.banner-container
+            // Background overlay
+            .background-overlay
+            .row
+                .col-sm-8
+                    .banner-img.text-center
+                        img.img-fluid(src='/img/front/banner.png' alt='')
+                .col-sm-4
+                    .banner-info
+                        img(src="/img/front/logo-leaf-new.png", alt="" style="margin:1rem")
+                        p Best Quality Products
+                        h1 Welcome El Diwan
+                        button.btn-1.btn.btn-primary((click)='shopNowClicked()') SHOP NOW
+    
+    // About me
+    section.about-company.section-margin
+        .container
+            .row.section-title
+                .col-12
+                    h2 Hi, we are El Diwan Company.
+            .row.content
+                .col-md-12.col-lg-8.offset-lg-2.col-p
+                    p
+                        | Since beginning my journey as a freelance designer nearly 2 years ago, I&apos;ve done remote work for startups, and working with team that need to grow fast and fast. I&apos;m
+                        | quietly confident, naturally curious, and perpetually working on improving my chops one design problem at a time.
+    
+    // what i do
+    section.What-i-do.section-padding.section-margin
+        .container.inside-What
+            .row
+                .col.col-md-3.col-12
+                    .content
+                        i.icofont-vehicle-delivery-van 
+                        h2.title Best Quality
+                        p 100% organic
+                .col.col-md-3.col-12
+                    .content
+                        i.icofont-address-book 
+
+                        h2.title Certified Organic
+                        p 100% Guarantee .
+                .col.col-md-3.col-12
+                    .content
+                        i.icofont-bill 
+                        h2.title Huge Savings
+                        p At Lowest Price .
+                .col.col-md-3.col-12
+                    .content
+                        i.icofont-recycle 
+                        h2.title Easy Returns
+                        p No Questions Asked .
+    
+    // Videos
+    section.vedios.section-margin
+        .container
+            .row.vedios-info-row
+                .col-sm-6
+                    .vedio-info
+                        h1 El-Diwan
+                        p
+                            | An Egyptian joint stock company established in 2008 in the field of high quality food packaging
+                .col-sm-6
+                    .embed-responsive.embed-responsive-16by9(autoplay='' loop='' controls='' muted='')
+                        //- <iframe class="embed-responsive-item" src="https://el-diwan.com/wp-content/uploads/2021/08/WhatsApp-Video-2021-07-26-at-5.24.49-PM.mp4#t=3" allowfullscreen></iframe>
+                        video(width="320" height="240" controls)
+                            source(src="/videos/main-video.mp4" type="video/mp4")
+                            | Your browser does not support the video tag.
+                        
+            .row.mt-5.vedios-slide-row
+                .col-sm-12
+                    div(style='text-align: center; margin: 0; padding: 0')
+                        ng-image-slider(#nav='' [images]='imageObject' [infinite]='true' [autoslide]='1' [imagesize]="{width: '30%', height: 150}" slideimage='1')
+    
+    // Best Selling Products
+    section.bestSeller.section-margin
+        .container-full
+            .row
+                .col-sm-12
+                    .section-title
+                        h2.title Best Selling Products
+        .container
+            .row.best-seller-row
+                .col-lg-3.col-md-4.col-sm-6.col-12
+                    .main-product
+                        .productBestImg
+                            img([src]='item.image' alt='')
+                        .productName
+                            h2 {{ item.name }}
+                        .product-footer
+                            a.btn.btn-2(href='/product' ) Click here
+    
+    section.shopping.section-margin
+        .container
+            .row.justify-content-center
+                .col-lg-8
+                    .section-title
+                        h2
+                            | Shopping 
+                            span Product
+            .row.shopping-product-row
+                .col-lg-4.col-md-4.col-sm-6
+                    .shop-cards
+                        .shopping-item
+                            img(src='/img/front/banner.png' alt='Team')
+                            h2 Grocery
+                        .product-footer
+                            a.btn.btn-2(href='/shop') Shop now
+                .col-lg-4.col-md-4.col-sm-6
+                    .shop-cards
+                        .shopping-item
+                            img(src='/img/front/banner.png' alt='Team')
+                            h2 Spices
+                        .product-footer
+                            a.btn.btn-2(href='/shop') Shop now
+                .col-lg-4.col-md-4.col-sm-6
+                    .shop-cards
+                        .shopping-item
+                            img(src='/img/front/banner.png' alt='Team')
+                            h2 Legumes
+                        .product-footer
+                            a.btn.btn-2(href='/shop') Shop now
+    section.shooping-bin
+        .container-full
+            .row
+                .col-sm-6
+                    .section-title
+                        h2.title Get your Grocery in one click
+                .col-sm-6.text-center
+                    a.btn.btn-2(href=' ') Grocery now
+
+    section.logo.section-margin
+        .container-full
+            .row
+                .col-md-4.col-sm-12.text-center
+                    p.text-center Featured Brands:
+                .col-md-8.col-sm-12
+                    .imgLogo.mr-5.mt-5.mb-5
+                        //- img.img-responsive(src='https://el-diwan.com/wp-content/uploads/2021/03/logo-5.svg ' alt=' ')
+                        img.img-responsive(src='/img/logo.png' alt=' ')
+                    .imgLogo.mr-5.mt-5.mb-5
+                        //- img.img-responsive(src='https://el-diwan.com/wp-content/uploads/2021/03/logo-4.svg ' alt=' ')
+                        img.img-responsive(src='/img/logo.png' alt=' ')
+                    .imgLogo.mr-5.mt-5.mb-5
+                        //- img.img-responsive(src='https://el-diwan.com/wp-content/uploads/2021/03/logo-3.svg ' alt=' ')
+                        img.img-responsive(src='/img/logo.png' alt=' ')
+                    .imgLogo.mr-5.mt-5.mb-5
+                        //- img.img-responsive(src='https://el-diwan.com/wp-content/uploads/2021/03/logo-2.svg ' alt=' ')
+                        img.img-responsive(src='/img/logo.png' alt=' ')
+                    .imgLogo.mr-5.mt-5.mb-5
+                        //- img.img-responsive(src='https://el-diwan.com/wp-content/uploads/2021/03/logo-1.svg ' alt=' ')
+                        img.img-responsive(src='/img/logo.png' alt=' ')
+    
+    // Team Section Start
+    section.team.section-padding
+        .container
+            .row.justify-content-center
+                .col-lg-8
+                    .section-title
+                        h2
+                            | Company 
+                            span  employees 
+            .row.team-row
+                .col-12
+                    .owl-carousel.team-carousel.row
+                        .col-md-4
+                            .team-item
+                                img(src='/img/front/team/3.jpg ' alt='Team ')
+                                h3 Nashat
+                                span UI Designer
+                        .col-md-4
+                            .team-item
+                                img(src='/img/front/team/3.jpg ' alt='Team ')
+                                h3 Nashat
+                                span UI Designer
+                        .col-md-4
+                            .team-item
+                                img(src='/img/front/team/3.jpg ' alt='Team ')
+                                h3 Nashat
+                                span UI Designer
+    // Team Section End
+    

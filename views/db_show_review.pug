@@ -1,0 +1,31 @@
+extends dashbord
+
+block user_view_content
+    h1.main-heading User Review
+    form.form.form-edit-review(autocomplete="off")
+        .show__review--Container 
+            label.label__show.review__content 
+                i.icofont-quote-left.qoute.qoute--1
+                = ` ${review.review} ` 
+                i.icofont-quote-right.qoute.qoute--2
+            label.label__show
+                i.icofont-ui-user 
+                = 'By : Mr ' + review.publisher
+                label.label__show--sub= review.name
+            label.label__show
+                i.icofont-email 
+                = 'Email : ' + review.publisher_email
+                label.label__show--sub= review.category
+            label.label__show
+                i.icofont-food-basket  
+                = 'On Product : ' + product.name
+                //- label.label__show--sub= 
+            label.label__show
+                i.icofont-ui-rating  
+                = 'Rating : ' + review.rating
+                //- label.label__show--sub= 
+                - let date = new Date(review.createAt)
+            label.label__show
+                i.icofont-ui-timer   
+                = 'Date : ' + date.getDate() + ' / '+ (date.getMonth()+1) + ' / ' + date.getFullYear()
+                //- label.label__show--sub= 

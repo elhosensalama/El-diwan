@@ -1,0 +1,20 @@
+extends dashbord
+
+block user_view_content
+    h1.main-heading Your Product
+    form.form.form-edit-product(autocomplete="off")
+        .show__product--Container 
+            label.label__show= 'Product : ' 
+                label.label__show--sub= product.name
+            label.label__show= 'Category : ' 
+                label.label__show--sub= product.category
+            label.label__show= 'Quality : '
+                label.label__show--sub= '' + product.quality
+            label.label__show= 'Price : ' 
+                label.label__show--sub= product.price
+            label.label__show= 'weight : ' 
+                label.label__show--sub= product.weight
+            label.label__show= 'ratingsAverage : ' 
+                label.label__show--sub= product.ratingsAverage
+            img.img__show(src=`/img/products/${product.image}`, alt='alt')
+                 

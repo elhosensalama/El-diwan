@@ -1,0 +1,40 @@
+extends dashbord
+
+block user_view_content
+    h1.main-heading Manage Your Products
+    form(action="" method="GET") 
+        input.searchBox(type="search", name="name" placeholder="Search")
+        i.searchIcon.icofont-search-1 
+    .main-container
+        .table-container
+            table 
+                thead 
+                    tr
+                        th #
+                        th name
+                        th category
+                        th price
+                        th slug
+                        th weight
+                        th rate
+                        th manage
+                tbody 
+                    - let i = 0
+                    each p in products
+                        - i++
+                        tr
+                            td= i
+                            td= p.name
+                            td= p.category
+                            td= p.price
+                            td= p.slug
+                            td= p.weight
+                            td= p.ratingsAverage
+                            td 
+                                button.delete_item_btn(data-id=`${p.id}` data-item='product' data-kind="btn") 
+                                    i.manageIcon.icofont-bin 
+                                button.edit_item_btn(data-id=`${p.id}` data-item='product' data-kind="btn") 
+                                    i.manageIcon.icofont-edit 
+                                button.show_item_btn(data-id=`${p.id}` data-item='product' data-kind="btn") 
+                                    i.manageIcon.icofont-eye-alt 
+                                

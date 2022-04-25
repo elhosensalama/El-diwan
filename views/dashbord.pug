@@ -1,0 +1,69 @@
+mixin navItem(link, text, icon , active )
+    li(class=`${active ? 'side-nav--active' : '' }`)
+        a(href=`${link}`)
+            svg
+                use(xlink:href=`/img/icons.svg#icon-${icon}`)
+            | #{text} 
+
+
+doctype html
+html(lang='en')
+    head
+        block head
+            meta(charset='UTF-8')
+            meta(http-equiv='X-UA-Compatible', content='IE=edge')
+            meta(name='viewport', content='width=device-width, initial-scale=1.0')
+            link(rel='stylesheet', href='https://fonts.googleapis.com/css?family=Lato:300,300i,700')
+            link(rel='stylesheet', href='/css/style.css')
+            link(rel='shortcut icon', href='/img/logo.png', type='image/png')
+            link(rel="stylesheet" type="text/css" href="/css/icofont.min.css")
+            title El-diwan | #{title}
+            script(src="/js/axios.min.js")
+    body 
+
+        // Content
+        main.main
+            
+            .navigation
+                input(type="checkbox" class="navigation__checkbox" id="navi-toggle")
+
+                label(for="navi-toggle" class="navigation__button")
+                    span.navigation__icon &nbsp;
+                
+                .navigation__background &nbsp;
+
+                nav.navigation__nav
+                    ul.navigation__list
+                        li.navigation__item 
+                            a.navigation__link(href="/")
+                                span 01
+                                | Home Page
+                        li.navigation__item 
+                            a.navigation__link.nav__el--logout(href="/logout")
+                                span 02
+                                | Log out
+                
+            
+            .user-view
+                nav.user-view__menu
+                    ul.side-nav
+                        +navItem('/dashboard', 'Dashboard', 'map', page_dashboard_val)
+                        +navItem('/manage_products', 'My Products', 'briefcase', page_products_val)
+                        +navItem('/manage_orders', 'My Orders', 'star', page_orders_val)
+                        +navItem('/manage_reviews', 'Reviews', 'credit-card', page_reviews_val)
+                    - if (user.role === 'admin')
+                        .admin-nav
+                            h5.admin-nav__heading Admin
+                            ul.side-nav
+                                +navItem('/manage_account', 'Settings', 'settings', page_settings_val)
+                                +navItem('/create_product', 'Create Product', 'briefcase', page_create_product_val)
+                                //- +navItem('/edit_product', 'Edit Product', 'users', page_edit_product_val)
+                                //- +navItem('#', 'Manage reviews', 'star')
+                                //- +navItem('#', 'Manage bookings', 'briefcase')
+
+                .user-view__content
+                    block user_view_content
+        
+        // Footer
+        //- include _footer
+        script(src="/js/index.js" type="module")

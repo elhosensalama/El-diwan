@@ -1,0 +1,73 @@
+extends base
+
+block page_content
+
+    section.checkout-section#page_checkout 
+        .container 
+            h1 checkout 
+            .products-container
+                .nomer.mb-0 
+                    i.icofont-cart 
+                    | Have a coupon !! ,  to enter your coupon code 
+                    span.tab.c-main
+                        span#ad-info-btn.tablinks.clickToShowCoupon Click here
+                    //- Tab content 
+                #ad-info.tabcontent
+                    span If you have a coupon code, please apply it below.
+                    form.couponForm
+                        input.mr-5.p-2.mt-2(name="code" type="text" placeholder="Coupon code")
+                        input.btn-2( name="submit" type="submit" value="Apply coupon")
+            .row.mt-5
+                .col-lg-7.col-12
+                    h3.orderMessageContainer Billing details 
+                    hr
+                    form.billingForm(action="")
+                        label(for="#userName") Your name 
+                            i.icofont-star-alt-2.text-danger
+                        br
+                        input.mt-2.mb-2.p-1.w-100#userName(type="text", name="name" placeholder="Mohamed Nashaat")
+                        br
+                        label(for="#userEmail")  Your email
+                            i.icofont-star-alt-2.text-danger
+                        br
+                        input.mt-2.mb-2.p-1.w-100#userEmail(type="email", name="email" placeholder="mohamednashaat@gmail.com")
+                        br
+                        label(for="#userPhone")  Your phone
+                            i.icofont-star-alt-2.text-danger
+                        br
+                        input.mt-2.mb-2.p-1.w-100#userPhone(type="text", name="phone" placeholder="01061728869")
+                        br
+                        label(for="#userState")  Your state
+                            i.icofont-star-alt-2.text-danger
+                        br
+                        input.mt-2.mb-2.p-1.w-100#userState(type="text", name="state" placeholder="Cairo")
+                        br 
+                        label(for="#userCity")  Your city
+                            i.icofont-star-alt-2.text-danger
+                        br
+                        input.mt-2.mb-2.p-1.w-100#userCity(type="text", name="city" placeholder="Naser City")
+
+                        label(for="#userNotes")  Order Notes (optional)
+                        br
+                        input.mt-2.mb-2.p-1.w-100#userNotes(type="text", name="info" placeholder="")
+                .col-lg-5.col-12
+                    .order-container 
+                        span.orderHeading Your Order
+                        table.w-100.mb-4
+                            thead 
+                                tr 
+                                    th Product 
+                                    th Subtotal 
+                            tbody#tableBody 
+                                tr 
+                                    td Shipping 
+                                    td Free Shipping 
+                                tr 
+                                    td Total 
+                                    td 46 EGP 
+                        span.mt-3 Cash on delivery
+                        .customPaySpan Pay with cash upon delivery 
+                        span Your personal data will be user to process your order, support your experience throughout this website, and for other purposes described in our 
+                            span.c-main Privacy Policy 
+                        br
+                        button.btn-place-order.btn-2.mt-5.mr-1.ml-1.w-100 Place order

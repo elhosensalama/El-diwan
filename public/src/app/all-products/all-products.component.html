@@ -1,0 +1,21 @@
+<div class="container">
+    <div class="row">
+        <div class="col-lg-3 col-md-4 col-sm-4" *ngFor="let product of products" (click)="selectedProduct(product.id)">
+            <div class="product-item">
+                <div class="product-img">
+                    <img class="img-responsive" src="../../assets/images/banner.png" alt="">
+                </div>
+                <div class="product-info">
+                    <h1>{{ product.name }}</h1>
+                    <p>{{ product.summary }}</p>
+                    <div class="spans">
+                        <span class="price">{{ product.price }} $</span>
+                        <span class="quality"> {{ product.quality }}  </span>
+                    </div>
+                    <h6>{{ product.ratingsAverage }}</h6>
+                </div>
+                <button class="btn btn-card">Add to card</button>
+            </div>
+        </div>
+    </div>
+</div>

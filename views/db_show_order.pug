@@ -1,0 +1,41 @@
+extends dashbord
+
+block user_view_content
+    h1.main-heading= 'Mr. ' + order.name +  "'s Order"
+    form.form.form-edit-product(autocomplete="off")
+        .show__Order--Container 
+            .show__Order--dev.show__Order--div-1
+                h1 Products 
+                - let i = 0
+                    each o in order.products
+                        - i++ 
+                        .div_single_order
+                            h2= 'Order ' + i + ' : '
+                            h3= 'Product : ' + o.name
+                            h3= 'Quantity : ' + o.count
+                            h3= 'Price : ' + o.price + ' EGP'
+                    br
+                    .div_single_order
+                        h2 Total Price 
+                        h3= order.totalPrice + ' EGP'
+            hr
+            .show__Order--dev.show__Order--div-2
+                    h1 Additial Informaton
+                    .div_single_order
+                        h2 Address 
+                        h3= order.city + ' / ' + order.state + ' / ' + order.country
+                        h3(style="margin-left: 5rem")= order.streetAddress 
+                        h2 Phone 
+                        h3= order.phone
+                        h2 Email 
+                        h3= order.email
+                        h2 Info 
+                        h3= order.addInfo
+
+
+                 	
+//-  
+    
+    totalPrice	42
+    _id	"618c0c7afcc9233fbd7125cd"
+    addInfo	"please deleiver fast"

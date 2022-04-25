@@ -1,0 +1,42 @@
+extends dashbord
+
+block user_view_content
+    h1.main-heading Manage The Reviews
+    
+    .main-container
+        .table-container
+            table 
+                thead 
+                    tr
+                        th #
+                        th name
+                        th email
+                        th rate
+                        th content
+                        th date
+                        th product
+                        th manage
+                tbody 
+                    - let i = 0
+                    each r in reviews 
+                        - console.log(r);
+                        - i++
+                        - year = new Date(r.createAt).getFullYear();
+                        - month = new Date(r.createAt).getMonth();
+                        - day = new Date(r.createAt).getDay();
+                        tr
+                            td= i
+                            td= r.publisher
+                            td= r.publisher_email
+                            td= r.rating
+                            td= r.review.slice(0, 20) + '...'
+                            td= day + ' / ' + month + ' / ' + year 
+                            if r.product
+                                td= r.product.name
+                            else
+                                td= 'null'
+                            td 
+                                button.delete_item_btn(data-id=`${r.id}` data-item='review' data-kind="btn")
+                                    i.manageIcon.icofont-bin 
+                                button.show_item_btn(data-id=`${r.id}` data-item='review' data-kind="btn")
+                                    i.manageIcon.icofont-eye-alt 
